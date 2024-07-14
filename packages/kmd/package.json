@@ -1,0 +1,35 @@
+{
+  "name": "@algofam/kmd-fetch",
+  "version": "3.25.0",
+  "description": "Fetch client for KMD",
+  "keywords": [
+    "nfdomain",
+    "nfd",
+    "nameservice",
+    "fetch"
+  ],
+  "type": "module",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vitest --ui --coverage",
+    "test": "vitest",
+    "lint": "eslint src",
+    "docs": "typedoc",
+    "lint:fix": "eslint src --fix",
+    "coverage": "vitest run --coverage",
+    "build": "npm run generate && tsc",
+    "generate": "rimraf src/*.ts lib && openapi-ts --exportCore false -i https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/kmd/api/swagger.json -o src -c fetch --name KmdClient"
+  },
+  "author": "Awesome Algorand",
+  "license": "Unlicense",
+  "dependencies": {
+    "@algofam/core-fetch": "^1.0.0"
+  }
+}

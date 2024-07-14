@@ -1,0 +1,51 @@
+{
+  "name": "@algofam/indexer-fetch",
+  "version": "3.5.0",
+  "description": "Fetch client for Indexer",
+  "keywords": [
+    "nfdomain",
+    "nfd",
+    "nameservice",
+    "fetch"
+  ],
+  "type": "module",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/NfdClient.d.ts",
+      "default": "./lib/NfdClient.js"
+    },
+    "./schemas": {
+      "types": "./lib/schemas.gen.d.ts",
+      "default": "./lib/schemas.gen.js"
+    },
+    "./services": {
+      "types": "./types/services.gen.d.ts",
+      "default": "./lib/services.gen.js"
+    },
+    "./types": {
+      "types": "./types/types.gen.d.ts",
+      "default": "./lib/types.gen.js"
+    },
+    "./README.md": "./README.md"
+  },
+  "scripts": {
+    "dev": "vitest --ui --coverage",
+    "test": "vitest",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "coverage": "vitest run --coverage",
+    "build": "npm run generate && tsc",
+    "generate": "rimraf src/*.ts lib && openapi-ts --exportCore false -i https://raw.githubusercontent.com/algorand/indexer/v3.5.0/api/indexer.oas3.yml -o src -c fetch --name IndexerClient"
+  },
+  "author": "Awesome Algorand",
+  "license": "Unlicense",
+  "dependencies": {
+    "@algofam/core-fetch": "^1.0.0"
+  }
+}

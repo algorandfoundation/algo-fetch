@@ -1,0 +1,32 @@
+{
+  "name": "@algofam/algod-fetch",
+  "version": "3.25.0",
+  "description": "Fetch client for Algod RPC",
+  "keywords": [
+    "fetch"
+  ],
+  "type": "module",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    }
+  },
+  "scripts": {
+    "dev": "vitest --ui --coverage",
+    "test": "vitest",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "docs": "typedoc --out docs src",
+    "coverage": "vitest run --coverage",
+    "build": "npm run generate && tsc",
+    "generate": "rimraf src/*.ts lib && openapi-ts --exportCore false -i https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/algod/api/algod.oas3.yml -o src -c fetch --name AlgodClient"
+  },
+  "author": "Awesome Algorand",
+  "license": "Unlicense",
+  "dependencies": {
+    "@algofam/core-fetch": "^1.0.0"
+  }
+}
