@@ -34,25 +34,25 @@ export default defineConfig({
 					output: `packages`,
 					entryPoints: [`../packages/*`],
 				}),
-				starlightOpenAPI([
-					{
-						base: 'api/algod',
-						label: 'Algod',
-						schema: 'https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/algod/api/algod.oas3.yml',
-					},
-					{
-						base: 'api/indexer',
-						label: 'Indexer',
-						schema: 'https://raw.githubusercontent.com/algorand/indexer/v3.5.0/api/indexer.oas3.yml',
-					},
+				//TODO: Fix the production openapi build, works in development
 
-					{
-						base: 'api/kmd',
-						label: 'KMD',
-						schema: 'https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/kmd/api/swagger.json',
-					},
-
-				]),
+				// starlightOpenAPI([
+					// {
+					// 	base: 'api/algod',
+					// 	label: 'Algod',
+					// 	schema: 'https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/algod/api/algod.oas3.yml',
+					// },
+					// {
+					// 	base: 'api/indexer',
+					// 	label: 'Indexer',
+					// 	schema: 'https://raw.githubusercontent.com/algorand/indexer/v3.5.0/api/indexer.oas3.yml',
+					// },
+					// {
+					// 	base: 'api/kmd',
+					// 	label: 'KMD',
+					// 	schema: 'https://raw.githubusercontent.com/algorand/go-algorand/v3.25.0-stable/daemon/kmd/api/swagger.json',
+					// },
+				// ]),
 			],
 			sidebar: [
 				{
@@ -66,11 +66,11 @@ export default defineConfig({
 					}
 				},
 				typeDocSidebarGroup,
-				{
-				label: "Services",
-					collapsed: true,
-					items: openAPISidebarGroups
-				},
+				// {
+				// label: "Services",
+				// 	collapsed: true,
+				// 	items: openAPISidebarGroups
+				// },
 			],
 		}),
 	],
