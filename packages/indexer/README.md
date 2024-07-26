@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.5/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.6/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -26,12 +26,21 @@ const client = new IndexerClient({
 # Change Log
 ![GitHub Logo](https://raw.githubusercontent.com/algorand/go-algorand/master/release/release-banner.jpg)
 
+# Important Notice
+
+**This is a maintenance release. Do not install this over 2.8.0.**
+
 # Highlights
 
-- Bug fix for importing asset params in inner transactions with unsupported characters
-- Disable buggy timeout behavior
+A bug in the 2.6.5 release caused indexer to crash with the following error on Testnet:
 
-## Fixed
+```
+{"error":"error in account type, previously had type lsig but got sig","level":"error","msg":"txn
+accounting r=18759726 i=8, error in account type, previously had type lsig but got
+sig","time":"2021-12-30T03:33:54Z"}
+```
 
-- Disable TimeoutMiddleware. (#788)
-- Remove non UTF-8 characters from Inner transaction Asset fields (#789)
+This issue was already fixed in 2.8.0. This hot fix will allow people to continue to run on the 2.6.x release.
+
+# Bug Fixes
+* Allow unexpected changes to sig type cache. (#814)
