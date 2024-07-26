@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.0.2/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.0.3/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -27,6 +27,5 @@ const client = new IndexerClient({
 ## Changes
 
 - Bug fixes
-  - Fix reconstituting txn genesis hash
-  - Asset API lookup bug
-
+  - Ensure time written to database is UTC (#134)
+  - Migration framework with first migration that fixes txn.txid 
