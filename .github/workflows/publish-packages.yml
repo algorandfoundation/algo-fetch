@@ -25,11 +25,16 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           cache: 'npm'
       - run: npm ci
+      - run: npm run build -w @awesome-algorand/core-fetch
       - run: node ./bin/publisher.js
         env:
           NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com'
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit
+        run: |
+          git commit -am "🔖 Release ${{ github.sha }}"
+          git push
       - name: Build with Astro
         run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
