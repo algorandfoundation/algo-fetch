@@ -2,7 +2,7 @@
 # @awesome-algorand/algod-fetch
 > Fetch client for Algod RPC
 
-Generated AlgodClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/go-algorand/v3.13.2-stable/daemon/algod/api/algod.oas3.yml). 
+Generated AlgodClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/go-algorand/v3.13.3-stable/daemon/algod/api/algod.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/go-algorand) for more information.
 
 ## Installation
@@ -28,18 +28,11 @@ const client = new AlgodClient({
 
 # Overview
 
-Updates to telemetry and reporting.
-
-# What&apos;s New
-
-* Better telemetry logging
-* Report metrics on telemetry errors
+Bug fix for cache issue.
 
 # Changelog
-## Enhancement
-* telemetry: don't report let asyncTelemetryHook wrap and log its own errors([#4932](https://github.com/algorand/go-algorand/pull/4932))
-* metrics: count telemetry server errors ([#4933](https://github.com/algorand/go-algorand/pull/4933))
-* log: stderr offending large log messages([#4930](https://github.com/algorand/go-algorand/pull/4930))
+## Bugfix
+* Ledger: Fix occasional null caching issue
 
 ## Protocol Upgrade
 This release does not contain a protocol upgrade.
