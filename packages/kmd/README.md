@@ -2,7 +2,7 @@
 # @awesome-algorand/kmd-fetch
 > Fetch client for KMD
 
-Generated KmdClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/go-algorand/v3.6.2-stable/daemon/kmd/api/swagger.json). 
+Generated KmdClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/go-algorand/v3.7.2-stable/daemon/kmd/api/swagger.json). 
 See the [upstream repository](https://github.com/algorand/go-algorand) for more information.
 
 ## Installation
@@ -28,89 +28,70 @@ const client = new KmdClient({
 
 # Overview
 
-Maintenance release of incremental enhancements and fixes.
+Bandwidth optimization for non-participating nodes and golang 1.17 upgrade.
 
 # What's New
-* Minor enhancements to logging
-* Improved debugging support in tealdbg
-* Golang 1.16 upgrade
-* Upgrade arm32 builder to use arm32v7 (deprecates raspberry pi 1 support)
+* Non-participating nodes do not receive gossiped proposed transactions by default
+* Building from source now supported for M1 Mac
+* Golang 1.17 upgrade
+
+**Note**
+
+A new flag was added to `update.sh` that will enable checksum and signature verification on the downloaded `updater` archive with the goal that at some point in the future, this will be the default. This requires that `gpg` and `sha256sum` are available on the system to be able to perform the checks. To start using this, pass `-verify` when calling the script. If `-verify` is not explicitly passed, `update.sh` will function the same as before. 
 
 # Changelog
 ## New Features
-* AVM: vFuture: inner appls can call v4 ([#3896](https://github.com/algorand/go-algorand/pull/3896))
-* Goal: Source Mapping PC to TEAL ([#3726](https://github.com/algorand/go-algorand/pull/3726))
-
+* Build: Bump golang to 1.17.9/Mac M1 Support ([#3919](https://github.com/algorand/go-algorand/pull/3919))
 ## Enhancements
-* AVM: Deadcode and basic block analysis ([#3870](https://github.com/algorand/go-algorand/pull/3870))
-* AVM: Perform json_ref expected type validation before expensive JSON processing ([#3866](https://github.com/algorand/go-algorand/pull/3866))
-* AVM: Extract divideCeilUnsafely to help document opcode costing rationale ([#3867](https://github.com/algorand/go-algorand/pull/3867))
-* AVM: Assembly simplification & flexible costs ([#3857](https://github.com/algorand/go-algorand/pull/3857))
-* AVM: Rework around opcode fields for more flexible costs ([#3832](https://github.com/algorand/go-algorand/pull/3832))
-* AVM: Improve error handling and execution time ([#3612](https://github.com/algorand/go-algorand/pull/3612))
-* Agreement: add counters for dropped tasks and slow responses ([#3861](https://github.com/algorand/go-algorand/pull/3861))
-* Agreement: report proposal and vote message buffer sizes at end of round ([#3932](https://github.com/algorand/go-algorand/pull/3932))
-* Algod: Write to stdout when config.LogSizeLimit is 0 or -o is passed to algod. ([#3903](https://github.com/algorand/go-algorand/pull/3903))
-* Algod: Add disassemble endpoint ([#3908](https://github.com/algorand/go-algorand/pull/3908))
-* Algonet: use lower value of LastPartKeyRound for bootstrappedScenario ([#3865](https://github.com/algorand/go-algorand/pull/3865))
-* Build: use 1.16.15 instead of 1.16.11 ([#3833](https://github.com/algorand/go-algorand/pull/3833))
-* Build: add build essentials to dependency list ([#3782](https://github.com/algorand/go-algorand/pull/3782))
-* Build: update build dependencies to use go 1.16 ([#3816](https://github.com/algorand/go-algorand/pull/3816))
-* Build: compile with golang 1.16 ([#3803](https://github.com/algorand/go-algorand/pull/3803))
-* Build: Update build image from arm32v6 to arm32v7 ([#3933](https://github.com/algorand/go-algorand/pull/3933))
-* Ci: remove buildpulse upload step ([#3883](https://github.com/algorand/go-algorand/pull/3883))
-* Ci: add test partitioning based on partition test verifier output ([#3859](https://github.com/algorand/go-algorand/pull/3859))
-* Config: add some warning comments about changing RewardUnit value ([#3846](https://github.com/algorand/go-algorand/pull/3846))
-* Devmode: create a block for external txns only ([#3784](https://github.com/algorand/go-algorand/pull/3784))
-* Devops: Txnsync recipe updates ([#3906](https://github.com/algorand/go-algorand/pull/3906))
-* Devops: Added recipe for transaction sync testing. ([#3884](https://github.com/algorand/go-algorand/pull/3884))
-* Enhancement: Nightly e2e test upload ([#3849](https://github.com/algorand/go-algorand/pull/3849))
-* Enhancement: Re-enable `fillBytes` method in ABI and eval.go implementation ([#3856](https://github.com/algorand/go-algorand/pull/3856))
-* Goal: Add asset optin command ([#3881](https://github.com/algorand/go-algorand/pull/3881))
-* Goal: Set default key dilution to be the same as algokey ([#3801](https://github.com/algorand/go-algorand/pull/3801))
-* Goal: Warn on invalid method signature assembly ([#3614](https://github.com/algorand/go-algorand/pull/3614))
-* Kmd: use updated karalabe lib ([#3819](https://github.com/algorand/go-algorand/pull/3819))
-* Ledger: test OnlineAccountData ([#3831](https://github.com/algorand/go-algorand/pull/3831))
-* Ledger: Refactor online totals ([#3770](https://github.com/algorand/go-algorand/pull/3770))
-* Netdeploy: Add override to enable devmode for a network template. ([#3904](https://github.com/algorand/go-algorand/pull/3904))
-* Netdeploy: Allow empty private network directory. ([#3911](https://github.com/algorand/go-algorand/pull/3911))
-* Prefetcher: improve error codes ([#3815](https://github.com/algorand/go-algorand/pull/3815))
-* REST API: Check for pending transactions in most recent rounds first. ([#3836](https://github.com/algorand/go-algorand/pull/3836))
-* REST Client: always set Exclude value in accountInformationParams ([#3728](https://github.com/algorand/go-algorand/pull/3728))
-* Tealdbg: Support for StepOver and refactoring object IDs ([#3653](https://github.com/algorand/go-algorand/pull/3653))
-* Tealdbg: Replace LocalRunner.Run with LocalRunner.RunAll ([#3805](https://github.com/algorand/go-algorand/pull/3805))
-* Telemetry: report heartbeat metrics as JSON numbers ([#3802](https://github.com/algorand/go-algorand/pull/3802))
-* Tests: Disable bandwidth pprof svg generation by default ([#3779](https://github.com/algorand/go-algorand/pull/3779))
-* Abi: Fix typo in abi_type.go ([#3940](https://github.com/algorand/go-algorand/pull/3940))
+* Algod: Add a sourcemap flag for compile endpoint ([#3938](https://github.com/algorand/go-algorand/pull/3938))
+* Algod API: Remove errant base64 docs reference ([#3982](https://github.com/algorand/go-algorand/pull/3982))
+* Algokey: Add -v flag to get the version ([#4004](https://github.com/algorand/go-algorand/pull/4004))
+* Build: Add install_buildtools.sh to check_deps.sh error message ([#3921](https://github.com/algorand/go-algorand/pull/3921))
+* Ci: use tag to determine channel if possible ([#4017](https://github.com/algorand/go-algorand/pull/4017))
+* Ci: add simple codecov config ([#3997](https://github.com/algorand/go-algorand/pull/3997))
+* Cleanup: replace crypto.HashObj(Transaction) with Transaction.ID() ([#3958](https://github.com/algorand/go-algorand/pull/3958))
+* Devops: Use Cloudflare API token instead of auth key ([#4039](https://github.com/algorand/go-algorand/pull/4039))
+* Dryrun: Return EvalDeltas for failed executions in Dryrun ([#3929](https://github.com/algorand/go-algorand/pull/3929))
+* Metrics: collect and report Go runtime.metrics ([#4041](https://github.com/algorand/go-algorand/pull/4041))
+* Network: Non-participating Nodes Request Tx Gossip Only If Forcefetchtransactions: true ([#3918](https://github.com/algorand/go-algorand/pull/3918))
+* Tealdbg: Add hidden &quot;generate-docs&quot; command ([#3830](https://github.com/algorand/go-algorand/pull/3830))
+* Tests: Support e2e-go tests when repo is not installed in GOPATH. ([#3949](https://github.com/algorand/go-algorand/pull/3949))
+* Tools: Add benchmark warnings for PRs and push graphs for commits into master ([#3998](https://github.com/algorand/go-algorand/pull/3998))
+* Transaction Sync: Transition test ([#3882](https://github.com/algorand/go-algorand/pull/3882))
 ## Bugfixes
-* AVM: Fix langspec (and some disassembly errors) for itxn_field ([#3869](https://github.com/algorand/go-algorand/pull/3869))
-* AVM: Add acct_params_get to langspec.json ([#3862](https://github.com/algorand/go-algorand/pull/3862))
-* AVM: getbyte and setbyte description to say index must be within length of array ([#3772](https://github.com/algorand/go-algorand/pull/3772))
-* Algocfg: Fix algocfg get for non-string parameters. ([#3907](https://github.com/algorand/go-algorand/pull/3907))
-* Algod: Fix issue with nil accounts in local-deltas array ([#3790](https://github.com/algorand/go-algorand/pull/3790))
-* Algokey: clarify error messages. ([#3727](https://github.com/algorand/go-algorand/pull/3727))
-* Bug-fix: ABI inferToSlice nil testcases ([#3826](https://github.com/algorand/go-algorand/pull/3826))
-* Bug-fix: ABI encode infer to slice IsNil handler removal ([#3823](https://github.com/algorand/go-algorand/pull/3823))
-* Diagcfg: Allow diagcfg to create logging.config in data directory. ([#3912](https://github.com/algorand/go-algorand/pull/3912))
-* Goal: Rename source map output file ([#3905](https://github.com/algorand/go-algorand/pull/3905))
-* Goal: Add check for signer passed in the case of logic sig rekeyed account ([#3773](https://github.com/algorand/go-algorand/pull/3773))
-* Ledger: fix possible dbRound unsynchronization for trackers and registry ([#3910](https://github.com/algorand/go-algorand/pull/3910))
-* Tests: fix TestAcctUpdateslookupLatestCacheRetry ([#3804](https://github.com/algorand/go-algorand/pull/3804))
-* Tests: avoid generating large output on TestDeadlockLogging ([#3771](https://github.com/algorand/go-algorand/pull/3771))
-* Utils: add arm32-specific NanoSleep implementation ([#3930](https://github.com/algorand/go-algorand/pull/3930))
-* Ledger: fix lookupLatest usage of the resources cache ([#3939](https://github.com/algorand/go-algorand/pull/3939))
+* Agreement: fix typo in bandwidthFilter_test ([#4028](https://github.com/algorand/go-algorand/pull/4028))
+* Ci: ensure msgp generator has been run and is clean ([#3978](https://github.com/algorand/go-algorand/pull/3978))
+* Developer Tools: Add manjaro support to build script ([#3893](https://github.com/algorand/go-algorand/pull/3893))
+* Dryrun: Split dryrun cost field into BudgetConsumed and BudgetAdded ([#3957](https://github.com/algorand/go-algorand/pull/3957))
+* E2e Tests: Fixes for e2e test runs ([#3948](https://github.com/algorand/go-algorand/pull/3948))
+* Fix: place updater in same directory as update.sh ([#3983](https://github.com/algorand/go-algorand/pull/3983))
+* Metrics: update node_exporter to support Linux diskstats ([#4047](https://github.com/algorand/go-algorand/pull/4047))
+* Metrics: make metrics easier to use with prometheus ([#4020](https://github.com/algorand/go-algorand/pull/4020))
+* Race Condition: Add lock around catchpointsMu to avoid race condition ([#3944](https://github.com/algorand/go-algorand/pull/3944))
+* AVM: Allow app downgrades in old protocol versions ([#4086](https://github.com/algorand/go-algorand/pull/4086))
+* Network: message-of-interest tiny bug fix ([#4107](https://github.com/algorand/go-algorand/pull/4107))
 
-## Other
 ## Protocol Upgrade
 This release does not contain a protocol upgrade.
 
----
-**NOTE**
+## vFuture
+
 vFuture changes are *not* yet available in MainNet or TestNet but can be used in private networks. 
+
+### New Features
+
+* AVM: Add bn256 pairing opcodes experimentally ([#4013](https://github.com/algorand/go-algorand/pull/4013))
+
+### Enhancements
+
+* AVM: base64_decode can decode padded or unpadded encodings ([#4015](https://github.com/algorand/go-algorand/pull/4015))
+* AVM: Allow immutable access to foreign app accounts ([#3994](https://github.com/algorand/go-algorand/pull/3994))
+* AVM: Unify inner transaction ID calculation ([#3927](https://github.com/algorand/go-algorand/pull/3927))
+* Stateproofs: New block header field - SHA256 merkle root of the transactions ([#3829](https://github.com/algorand/go-algorand/pull/3829))
+* Stateproofs: fix GetProof endpoint response ([#3985](https://github.com/algorand/go-algorand/pull/3985))
 
 ---
 ## Additional Resources
 * [Algorand Forum](https://forum.algorand.org)
 * [Developer Documentation](https://developer.algorand.org)
-
 
