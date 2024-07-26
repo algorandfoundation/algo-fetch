@@ -16,6 +16,7 @@
     "prebuild": "npm run  -w @awesome-algorand/core-fetch build",
     "docs": "npm run build -w @awesome-algorand/docs-fetch",
     "docs:dev": "npm run dev -w @awesome-algorand/docs-fetch",
+    "clean": "npm run clean -ws --if-present",
     "predocs": "npm run build",
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
