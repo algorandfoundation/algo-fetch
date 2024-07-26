@@ -1,1 +1,1 @@
-export { Interceptors, type OpenAPIConfig } from '@algofam/core-fetch';
+export { Interceptors, type OpenAPIConfig } from '@awesome-algorand/core-fetch';

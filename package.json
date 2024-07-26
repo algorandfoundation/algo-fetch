@@ -10,18 +10,21 @@
   "scripts": {
     "dev": "vitest --ui --coverage",
     "build": "concurrently \"npm:build:*\"",
-    "build:algod": "npm run -w @algofam/algod-fetch build",
-    "build:indexer": "npm run -w @algofam/indexer-fetch build",
-    "build:kmd": "npm run  -w @algofam/kmd-fetch build",
-    "prebuild": "npm run  -w @algofam/core-fetch build",
-    "docs": "npm run build -w @algofam/docs-fetch",
-    "docs:dev": "npm run dev -w @algofam/docs-fetch",
+    "build:algod": "npm run -w @awesome-algorand/algod-fetch build",
+    "build:indexer": "npm run -w @awesome-algorand/indexer-fetch build",
+    "build:kmd": "npm run  -w @awesome-algorand/kmd-fetch build",
+    "prebuild": "npm run  -w @awesome-algorand/core-fetch build",
+    "docs": "npm run build -w @awesome-algorand/docs-fetch",
+    "docs:dev": "npm run dev -w @awesome-algorand/docs-fetch",
+    "clean": "npm run clean -ws --if-present",
     "predocs": "npm run build",
     "test": "vitest",
     "test:ui": "vitest --ui --coverage",
     "lint": "npm run lint -ws --if-present",
     "lint:fix": "npm run lint:fix -ws --if-present",
-    "coverage": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "verdaccio": "docker run -it --rm --name verdaccio -p 4873:4873 verdaccio/verdaccio",
+    "publisher": "node ./bin/publisher.js"
   },
   "keywords": [
     "algorand",
@@ -34,7 +37,7 @@
   "author": "Awesome Algorand",
   "license": "Unlicense",
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.48.2",
+    "@hey-api/openapi-ts": "^0.50.0",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
     "@vitest/coverage-v8": "^2.0.2",

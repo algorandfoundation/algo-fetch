@@ -1,1 +1,1 @@
-export {CancelablePromise} from '@algofam/core-fetch';
+export {CancelablePromise} from '@awesome-algorand/core-fetch';

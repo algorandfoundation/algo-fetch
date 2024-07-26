@@ -1,10 +1,11 @@
 {
-  "name": "@algofam/core-fetch",
+  "name": "@awesome-algorand/core-fetch",
   "version": "1.0.0",
   "description": "Core fetch utils",
   "keywords": [
     "hey-api",
-    "fetch"
+    "fetch",
+    "rpc"
   ],
   "type": "module",
   "module": "lib/index.js",
