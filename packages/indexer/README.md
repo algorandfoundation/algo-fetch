@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.8.4/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.9.0/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -25,25 +25,27 @@ const client = new IndexerClient({
 
 # Change Log
 ![GitHub Logo](https://raw.githubusercontent.com/algorand/go-algorand/master/release/release-banner.jpg)
+## Important Note
+This release enables support for the V31 go-algorand consensus upgrade.
 
-# Important Notice
 
-You cannot upgrade from indexer versions less than 2.8.0.  Please see [indexer 2.8.0 release notes](https://github.com/algorand/indexer/releases/tag/2.8.0) for details. Upgrading from 2.8.0 to 2.8.3 is fully supported.
-
-**We will not be supporting indexer < 2.8.0 in future consensus releases.**
-
-# Highlights
-
-* New limits for applications endpoint
+## What's New
+- Contract to contract support
+- Support for StateProof keys
 
 ## New Features
 
-* Nightly Tests: compare2algod in addition to the regular tests
+- Support StateProof keys. (#778)
+- Return Inner and Root transactions for nested logs support in C2C calls (#820)
 
-# Enhancements
+## Enhancement
 
-* Add default and max limits for applications endpoint.
- 
-# Bug Fixes
-* block-generator: Add README.
-* Adding slack notifications to builds
+- block-generator: Improve payment algorithm to allow sending many more transactions. (#864)
+- Include import-validator as a hidden algorand-indexer subcommand. (#871)
+- Update go-algorand submodule to latest C2C changes (#874)
+- Re-enable e2e test. (#881)
+- Update submodule to head of rel/beta (#882)
+
+## Bug Fixes
+- Fix log permissions to not be executable. (#880)
+- Ensure query is canceled after account rewind. (#893)
