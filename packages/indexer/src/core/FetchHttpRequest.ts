@@ -1,1 +1,1 @@
-export {FetchHttpRequest} from '@algofam/core-fetch';
+export {FetchHttpRequest} from '@awesome-algorand/core-fetch';

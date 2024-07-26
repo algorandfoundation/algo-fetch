@@ -1,1 +1,1 @@
-export type {BaseHttpRequest} from '@algofam/core-fetch';
+export type {BaseHttpRequest} from '@awesome-algorand/core-fetch';
