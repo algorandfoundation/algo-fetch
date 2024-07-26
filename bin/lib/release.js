@@ -100,7 +100,8 @@ const client = new ${name}({
             console.error(e);
         }
     } else {
-        console.log(`No new ${name} versions to deploy`);
+        console.log(`No new ${name} versions to deploy, building current`);
+        await build(packagePath, schemaUrl, name);
     }
 
 }
