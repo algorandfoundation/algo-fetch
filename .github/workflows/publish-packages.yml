@@ -1,8 +1,8 @@
 name: Publish Package
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: "*/30 * * * *"
+  schedule:
+    - cron: "*/30 * * * *"
 concurrency:
   group: "pages"
   cancel-in-progress: false
