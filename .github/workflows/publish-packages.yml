@@ -6,15 +6,15 @@ concurrency:
   cancel-in-progress: false
 env:
   BUILD_PATH: docs
+permissions:
+  issues: write
+  contents: write
+  packages: write
+  pull-requests: write
+  id-token: write
 jobs:
   npm-publish:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      contents: write
-      packages: write
-      pull-requests: write
-      id-token: write
     steps:
       - uses: actions/checkout@v4
         with:
