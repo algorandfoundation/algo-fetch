@@ -1,7 +1,29 @@
-# algofam/indexer-fetch
-> Unofficial Algorand Indexer API client
 
-This is a generated client for Algorand's [Indexer API](https://developer.algorand.org/docs/rest-apis/indexer/).
-It is generated from the [OpenAPI specification](https://github.com/algorand/indexer/blob/v3.5.0/api/indexer.oas3.yml).
-The client is generated using [@hey-api](https://heyapi.vercel.app/)
+# @awesome-algorand/indexer-fetch
+> Fetch client for Indexer
 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.0.0/api/indexer.oas3.yml). 
+See the [upstream repository](https://github.com/algorand/indexer) for more information.
+
+## Installation
+
+```bash
+npm install @awesome-algorand/indexer-fetch --save
+```
+
+### Usage
+
+```typescript
+import {IndexerClient} from '@awesome-algorand/indexer-fetch';
+
+const client = new IndexerClient({
+    BASE: 'https://testnet-idx.algonode.cloud/',
+})
+```
+
+#### See the full [API Documentation](https://awesome-algorand.github.io/algo-fetch/guides/clients/indexer/) for more information
+
+# Change Log
+## Changes
+
+Initial public release.

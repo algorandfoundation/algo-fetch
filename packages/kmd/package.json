@@ -1,6 +1,6 @@
 {
   "name": "@awesome-algorand/kmd-fetch",
-  "version": "0.0.0",
+  "version": "2.10.1",
   "description": "Fetch client for KMD",
   "keywords": [
     "algorand",
