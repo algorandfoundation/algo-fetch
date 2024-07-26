@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.4/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.5/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -28,7 +28,10 @@ const client = new IndexerClient({
 
 # Highlights
 
-- Bug fix for importing log entries with unsupported characters
+- Bug fix for importing asset params in inner transactions with unsupported characters
+- Disable buggy timeout behavior
 
 ## Fixed
-- Delete Null characters from Logs (#739)
+
+- Disable TimeoutMiddleware. (#788)
+- Remove non UTF-8 characters from Inner transaction Asset fields (#789)
