@@ -1,6 +1,6 @@
 {
   "name": "@awesome-algorand/indexer-fetch",
-  "version": "2.2.2",
+  "version": "2.3.4",
   "description": "Fetch client for Indexer",
   "keywords": [
     "algorand",
@@ -17,6 +17,10 @@
       "default": "./lib/index.js"
     }
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "dev": "vitest --ui --coverage",
     "test": "vitest",
@@ -24,7 +28,7 @@
     "lint:fix": "eslint src --fix",
     "coverage": "vitest run --coverage",
     "clean": "rimraf src/*.ts lib",
-    "build": "tsc"
+    "build": "tsc && tsc-alias -p tsconfig.json -f"
   },
   "author": "Awesome Algorand",
   "license": "Unlicense",

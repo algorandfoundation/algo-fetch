@@ -1,6 +1,6 @@
 {
   "name": "@awesome-algorand/algod-fetch",
-  "version": "3.0.1",
+  "version": "3.2.3",
   "description": "Fetch client for Algod RPC",
   "keywords": [
     "algorand",
@@ -17,6 +17,10 @@
       "default": "./lib/index.js"
     }
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "publishConfig": {
     "registry": "http://0.0.0.0:4873/"
   },
@@ -28,7 +32,7 @@
     "docs": "typedoc --out docs src",
     "coverage": "vitest run --coverage",
     "clean": "rimraf src/*.ts lib",
-    "build": "tsc"
+    "build": "tsc && tsc-alias -p tsconfig.json -f"
   },
   "author": "Awesome Algorand",
   "license": "Unlicense",

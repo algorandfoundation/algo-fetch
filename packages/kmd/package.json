@@ -1,6 +1,6 @@
 {
   "name": "@awesome-algorand/kmd-fetch",
-  "version": "3.0.1",
+  "version": "3.2.3",
   "description": "Fetch client for KMD",
   "keywords": [
     "algorand",
@@ -17,6 +17,10 @@
       "default": "./lib/index.js"
     }
   },
+  "files": [
+    "lib",
+    "src"
+  ],
   "scripts": {
     "dev": "vitest --ui --coverage",
     "test": "vitest",
@@ -25,7 +29,7 @@
     "lint:fix": "eslint src --fix",
     "coverage": "vitest run --coverage",
     "clean": "rimraf src/*.ts lib",
-    "build": "tsc"
+    "build": "tsc && tsc-alias -p tsconfig.json -f"
   },
   "author": "Awesome Algorand",
   "license": "Unlicense",

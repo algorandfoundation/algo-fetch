@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.2.2/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.3.4/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -26,9 +26,18 @@ const client = new IndexerClient({
 # Change Log
 ![GitHub Logo](https://raw.githubusercontent.com/algorand/go-algorand/master/release/release-banner.jpg)
 
-Increased traffic impacted indexer query performance. This hotfix adds indices to the postgres database tables.
+# Highlights
 
-## Changes
+This release adds support for an upcoming protocol upgrade, as well as
+fixes the following migration issues for people upgrading from 2.2.x to 2.3.x:
 
-Enhancement
-- Add indexes to speed queries
+- The migration may have exited with the following error. `update account asset, pq: null value in column \"frozen\" violates not-null constraint`
+- The migration may have completed, but be stuck in error status, reporting `error during migration 7 (Compute cumulative account rewards for all accounts.): m7: len(assetDataMap): 77 \u003e 0`
+
+# Changes
+
+## Enhancement
+- Update consensus params to support V27
+## Bug Fixes
+- Fix frozen null-constraint during import
+- Delete assets from asssetDataMap in migration when updating accounts
