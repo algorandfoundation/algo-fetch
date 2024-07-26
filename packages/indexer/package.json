@@ -1,6 +1,6 @@
 {
   "name": "@awesome-algorand/indexer-fetch",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Fetch client for Indexer",
   "keywords": [
     "algorand",
