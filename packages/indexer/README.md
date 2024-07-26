@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.4.0/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.5.0/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -28,20 +28,30 @@ const client = new IndexerClient({
 
 # Highlights
 
-This release addressed technical debt identified in previous releases.
+This is a small release to support the upcoming algod protocol upgrade. **This upgrade is necessary for running go-algorand 2.7.0 / 2.7.1 releases.**
 
-Migrations in this release take around half an hour and are non-blocking, and include:
+This release also includes miscellaneous small fixes and refactoring, as well as additional performance testing tools.
 
-- Cleaning up some stale account data for a small number of accounts which were closed and re-opened after rekeying, registering participation keys, or changing their online status
-- Search by freeze address filter fix
+This release contains a couple small migrations as part of data cleanup, which should take less than a minute to complete.
 
 # Changes
 
+## New Features
+
+- Add ExtraProgramPages app call field support
+- Performance testing: block generator and reporting
+- Prometheus metrics endpoint for performance testing
+
+## Enhancements
+- Add install instructions
+- Code cleanups and refactoring
+- Make `deleted` columns NOT NULL
+- Update protocols.json to v28
+- Add codecov integration
+
 ## Bug Fixes
-- Converting GT/LT uint struct fields to uint pointers
-- Delete false error message in daemon when starting from round 0
-- Fix Freeze Address Search Filter + Migration
-- Fix idb/mocks/IndexerDb.go regeneration
-- Migration that clears account data for accounts that have been closed
-- Retry db transactions on a serialization error
-- Return the right close amount for transfer transactions.
+- Creatable ID is wrong on round 0
+- Fix usage of e2e_client_runner.py
+- Replace `GetMaxRoundLoaded()` with `GetNextRoundToLoad()`
+- Return an error in `CommitRoundAccounting()` when import state is uninitialized
+
