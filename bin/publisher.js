@@ -19,7 +19,7 @@ async function getStableAlgodVersions(token) {
         .filter(r => isValid(r['ref'].replace('refs/tags/', '')))
         .map(r => toTuple(r.ref))
         // Skip missing KMD versions
-        .filter(r=>r[0] === 2 ? r[1] >= 10 : false)
+        .filter(r=>r[0] === 2 ? r[1] >= 10 : true)
         .sort(sortVersions);
 }
 
