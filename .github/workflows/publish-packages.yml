@@ -1,0 +1,27 @@
+name: Publish Package
+on:
+  workflow_dispatch:
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+      packages: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+      - run: npm ci
+      - run: node ./bin/publisher.js
+        env:
+          NPM_CONFIG_REGISTRY: 'https://npm.pkg.github.com'
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
