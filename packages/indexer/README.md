@@ -2,7 +2,7 @@
 # @awesome-algorand/indexer-fetch
 > Fetch client for Indexer
 
-Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.1/api/indexer.oas3.yml). 
+Generated IndexerClient for Algorand based on the [OpenAPI Specification](https://raw.githubusercontent.com/algorand/indexer/2.6.2/api/indexer.oas3.yml). 
 See the [upstream repository](https://github.com/algorand/indexer) for more information.
 
 ## Installation
@@ -24,14 +24,6 @@ const client = new IndexerClient({
 #### See the full [API Documentation](https://awesome-algorand.github.io/algo-fetch/guides/clients/indexer/) for more information
 
 # Change Log
-![GitHub Logo](https://raw.githubusercontent.com/algorand/go-algorand/master/release/release-banner.jpg)
+![GitHub Logo](https://raw.githubusercontent.com/algorand/go-algorand/master/release/release-banner.jpg)<br /><br /><h2> Highlights</h1>
 
-# Highlights
-
-Hot fix to support impending consensus upgrade for go-algorand.
-
-# Changes
-
-- Enhancements
-  - Support V29 protocol (#604)
-  - Pipeline - allow package signing from non-AMD64/Linux platforms (#595)
+- Increase the timeout to the httpServer
