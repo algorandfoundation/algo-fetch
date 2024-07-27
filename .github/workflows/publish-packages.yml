@@ -2,7 +2,7 @@ name: Publish Package
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "0 0 * * *"
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Commit
         run: |
-          git commit -am "🔖 Release ${{ github.sha }}"
+          git diff --quiet && git diff --staged --quiet || git commit -am "🔖 Release ${{ github.sha }}"
           git push
       - name: Build with Astro
         run: npm run build
